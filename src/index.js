@@ -33,8 +33,10 @@ client.on('message', msg => {
   if (msg.content.includes('```math')) {
     handleMath(msg);
   }
-  if (msg.mentions.members.first().id === client.user.id) {
-    msg.author.send(helpMessage);
+  if (msg.mentions.members.first() !== undefined) {
+    if (msg.mentions.members.first().id === client.user.id) {
+      msg.author.send(helpMessage);
+    }
   }
 });
 
